@@ -26,7 +26,6 @@
 @property (retain , nonatomic) NSMutableArray *statuses;
 @property (retain , nonatomic) NSMutableDictionary *currentStatus;
 @property (retain , nonatomic) NSMutableString *textNodeCharacters;
-//@property (retain , nonatomic) NSArray *list;
 
 - (id)initWithFilename:(NSString *)file_name url_str:(NSString *)url_str delegate:(id<XmlDataDelegate>)delegate;
 - (NSArray *) parseStatuses:(NSData *)xmlData;

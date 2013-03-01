@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Album.h"
-#import "Track.h"
+#import "AlbumList.h"
+#import "TrackList.h"
 #import "StreamingPlayer.h"
 #import "LocalData.h"
+#import "MultiRequestOperation.h"
+
 
 
 

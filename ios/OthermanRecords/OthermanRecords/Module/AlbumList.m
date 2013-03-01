@@ -6,18 +6,18 @@
 //  Copyright (c) 2013年 Otherman-Records. All rights reserved.
 //
 
-#import "Album.h"
+#import "AlbumList.h"
 #import "Setting.h"
 
-@implementation Album
+@implementation AlbumList
 id<AlbumDelegate> albumDelegate = nil;
 
 
-+(Album *)getInstance:(id<AlbumDelegate>) delegate
++(AlbumList *)instanceWithDelegate:(id<AlbumDelegate>) delegate
 {
     albumDelegate = delegate;
     static dispatch_once_t pred;
-    static Album *shared = nil;
+    static AlbumList *shared = nil;
     
     dispatch_once(&pred, ^{
         shared = [[[self class] alloc] init];
@@ -101,7 +101,7 @@ id<AlbumDelegate> albumDelegate = nil;
 
 -(void)didFinishLoading
 {
-    [albumDelegate didFinishLoadingAlbum:self];
+    [albumDelegate albumDidFinishLoading];
 }
 
 -(void)didFailWithError:(NSError *)error
@@ -109,4 +109,28 @@ id<AlbumDelegate> albumDelegate = nil;
     [albumDelegate didFailWithError:error];
 }
 
+- (NSDictionary *)albumWithCutnum:(NSString *)cutnum
+{
+    for(int n = 0; n < [self count]; n ++){
+        if([cutnum isEqualToString:[[self objectAtIndex:n] objectForKey:@"cutnum"]]){
+            return [self objectAtIndex:n];
+        }
+    }
+    return nil;
+}
+
+- (NSURL *)jacketURLWithCutnum:(NSString *)cutnum
+{
+    return [NSURL URLWithString:
+            [NSString stringWithFormat:@"http://www.otherman-records.com/images/releases/%@", [[self albumWithCutnum:cutnum] objectForKey:@"jacket"]]
+            ];
+}
+
+- (NSURL *)thumbnailURLWithCutnum:(NSString *)cutnum
+{
+    NSLog(@"album: %@", [self albumWithCutnum:cutnum]);
+    return [NSURL URLWithString:
+            [NSString stringWithFormat:@"http://archive.org/download/%@/%@", cutnum, [[self albumWithCutnum:cutnum] objectForKey:@"thumbnail"]]
+            ];
+}
 @end

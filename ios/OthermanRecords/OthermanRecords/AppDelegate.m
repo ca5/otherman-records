@@ -13,19 +13,25 @@
 
 
 @implementation AppDelegate
+{
+    NSOperationQueue* _queue;
+}
 
 @synthesize window = _window;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    /*
     //album test
-    [[Album getInstance:self] load];
-    [[Track getInstance:self] load];
+    [[AlbumList instanceWithDelegate:self] load];
+    [[TrackList instanceWithDelegate:self] load];
     
     //[[StreamingPlayer getInstance] startWithURL:@"http://archive.org/download/OTMN024/01-grayscale.mp3"];
+     */
 
-
+/* Favorite test
     
     Favorite *favorite = [[Favorite alloc] init];
     [favorite load];
@@ -36,8 +42,26 @@
     NSLog(@"favorite:\n %@", [favorite description]);
 
 
+*/
+    _queue = [[NSOperationQueue alloc] init];
 
+    NSLog(@"ope1");
+    MultiRequestOperation *ope1 = [[MultiRequestOperation alloc] initWithURL:[NSURL URLWithString:@"http://www.otherman-records.com/xmls/releases"]];
     
+    
+    NSLog(@"ope2");
+    MultiRequestOperation *ope2 = [[MultiRequestOperation alloc] initWithURL:[NSURL URLWithString:@"http://ja.wikipedia.org/wiki/Extensible_Markup_Language"]];
+    
+    NSLog(@"start ope1");
+    [ope1 addObserver:self forKeyPath:@"isFinished"
+              options:NSKeyValueObservingOptionNew context:1];
+    NSLog(@"start ope1");
+    [_queue addOperation:ope1];
+    
+    NSLog(@"start ope2");
+    [ope2 addObserver:self forKeyPath:@"isFinished"
+              options:NSKeyValueObservingOptionNew context:2];
+    [_queue addOperation:ope2];
 
     
     //push notifiacation test
@@ -49,17 +73,64 @@
     return YES;
 }
 
-/**** XmlData delegated function ****/
-- (void)didFinishLoadingAlbum:(Album *)data
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object
+                        change:(NSDictionary*)change context:(void*)context
 {
-    NSLog(@"album:\n %@", [data description]);
+    // データの長さを取得する
+    unsigned int    length;
+    length = [((MultiRequestOperation *)object).data length];
+    NSLog(@"data length %d id:%d", length, (int)context);
+    
+    // キー値監視を解除する
+    [object removeObserver:self forKeyPath:keyPath];
+}
+
+/*
+-(void) didFailWithErrorOperation:(NSError *)error operationId:(id)opeid
+{
+    NSLog(@"Ope Error: %@",[error localizedDescription]);
+}
+-(void) didFinishLoadingOperation:(NSData *)data operationId:(id)opeid
+{
+    int enc_arr[] = {
+        NSUTF8StringEncoding,			// UTF-8
+        NSShiftJISStringEncoding,		// Shift_JIS
+        NSJapaneseEUCStringEncoding,	// EUC-JP
+        NSISO2022JPStringEncoding,		// JIS
+        NSUnicodeStringEncoding,		// Unicode
+        NSASCIIStringEncoding			// ASCII
+    };
+    
+    NSString *raw_string = nil;
+    int max = sizeof(enc_arr) / sizeof(enc_arr[0]);
+    for (int i=0; i<max; i++) {
+        raw_string = [
+                      [NSString alloc]
+                      initWithData : data
+                      encoding : enc_arr[i]
+                      ];
+        if (raw_string!=nil) {
+            break;
+        }
+    }
+    
+    
+    NSLog(@"result: ID:%@ data:%@", opeid, raw_string);
+
+}
+ */
+
+/**** XmlData delegated function ****/
+- (void)albumDidFinishLoading
+{
+    NSLog(@"album:\n %@", [[AlbumList instanceWithDelegate:self] description]);
 
 }
 
-- (void)didFinishLoadingTrack:(Track *)data
+- (void)trackDidFinishLoading
 {
-    NSLog(@"track:\n %@", [data description]);
-    
+    NSLog(@"track:\n %@", [[TrackList instanceWithDelegate:self] description]);
+    NSLog(@"track OTMN001:\n %@", [[TrackList instanceWithDelegate:self] listWithCutnum:@"OTMN001"]);
 }
 
 - (void)didFailWithError:(NSError *)error

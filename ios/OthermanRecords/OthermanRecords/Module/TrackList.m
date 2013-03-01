@@ -6,18 +6,19 @@
 //  Copyright (c) 2013年 Otherman-Records. All rights reserved.
 //
 
-#import "Track.h"
+#import "TrackList.h"
 #import "Setting.h"
 
-@implementation Track
+@implementation TrackList
 id<TrackDelegate> trackDelegate = nil;
+NSString * cutnum = nil;
 
 
-+(Track *)getInstance:(id<TrackDelegate>) delegate
++(TrackList *)instanceWithDelegate:(id<TrackDelegate>) delegate
 {
     trackDelegate = delegate;
     static dispatch_once_t pred;
-    static Track *shared = nil;
+    static TrackList *shared = nil;
     
     dispatch_once(&pred, ^{
         shared = [[[self class] alloc] init];
@@ -46,6 +47,7 @@ id<TrackDelegate> trackDelegate = nil;
     NSString *textData = [self.textNodeCharacters stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/"]) {
+        [self.currentStatus setValue:cutnum forKey:@"cutnum"];
         [self.statuses addObject:self.currentStatus];
         self.currentStatus = nil;
         
@@ -58,9 +60,6 @@ id<TrackDelegate> trackDelegate = nil;
     } else if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/title/"]) {
         [self.currentStatus setValue:textData forKey:@"title"];
         
-    } else if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/md5/"]) {
-        [self.currentStatus setValue:textData forKey:@"md5"];
-        
     } else if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/creator/"]) {
         [self.currentStatus setValue:textData forKey:@"creator"];
         
@@ -70,8 +69,10 @@ id<TrackDelegate> trackDelegate = nil;
     } else if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/filename/"]) {
         [self.currentStatus setValue:textData forKey:@"filename"];
         
-    } else if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/cutnum/"]) {
-        [self.currentStatus setValue:textData forKey:@"cutnum"];
+    } else if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/num/"]) {
+        [self.currentStatus setValue:textData forKey:@"num"];
+    }else if ([self.currentXpath isEqualToString: @"releases/release/cutnum/"]) {
+        cutnum = textData;
     }
     
     int delLength = [elementName length] + 1;
@@ -83,12 +84,42 @@ id<TrackDelegate> trackDelegate = nil;
 -(void)didFinishLoading
 {
     NSLog(@"didFinishLoading(from XmlDataDelegate)");
-    [trackDelegate didFinishLoadingTrack:self];
+    [trackDelegate trackDidFinishLoading];
 }
 
 -(void)didFailWithError:(NSError *)error
 {
     [trackDelegate didFailWithError:error];
 }
+
+- (NSArray *)listWithCutnum:(NSString *)cutnum
+{
+    NSMutableArray *result = [NSMutableArray array];
+    for(int n = 0; n < [self count]; n ++){
+        if([cutnum isEqualToString:[[self objectAtIndex:n] objectForKey:@"cutnum"]]){
+            [result addObject:[self objectAtIndex:n]];
+        }
+    }
+    return result;
+}
+
+- (NSDictionary *)trackWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+{
+    NSArray *list = [self listWithCutnum:cutnum];
+    for(int n = 0; n < [list count]; n ++){
+        if([tracknum isEqualToString:[[list objectAtIndex:n] objectForKey:@"num"]]){
+            return [list objectAtIndex:n];
+        }
+    }
+    return nil;
+}
+
+- (NSURL *)trackURLWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum
+{
+    return [NSURL URLWithString:
+                [NSString stringWithFormat:@"http://archive.org/download/%@/%@", cutnum, [[self trackWithCutnum:cutnum tracknum:tracknum] objectForKey:@"filename"]]
+            ];
+}
+
 
 @end

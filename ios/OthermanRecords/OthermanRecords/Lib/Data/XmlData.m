@@ -42,6 +42,7 @@ BOOL use_cache = YES;
 
 - (BOOL)clear
 {
+    [super clear];
     if(![[NSFileManager defaultManager] fileExistsAtPath:_file_path]){
         return YES;
     }
@@ -133,9 +134,11 @@ BOOL use_cache = YES;
             NSLog(@"[INFO]use local file : %@", lastModifiedLocal);  
 
             [connection cancel];
+            [super clear]; // clear old datas
             [self loadLocalFile];
         }else{
             async_data = [[NSMutableData alloc] initWithData:0];
+            [super clear]; // clear old data
         }
     }
 }
