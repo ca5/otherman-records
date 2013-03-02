@@ -13,5 +13,7 @@
 - (BOOL)load;
 - (BOOL)loadWithCache:(BOOL)force;
 - (BOOL)clear;
+- (BOOL)setList:(NSMutableArray *)list;
+
 
 @end

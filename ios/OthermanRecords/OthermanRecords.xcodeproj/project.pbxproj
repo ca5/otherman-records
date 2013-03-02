@@ -33,6 +33,10 @@
 		6ADD680B16DE65A200E1377C /* MultiRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD680A16DE65A200E1377C /* MultiRequestOperation.m */; };
 		6ADD680C16DE65A200E1377C /* MultiRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD680A16DE65A200E1377C /* MultiRequestOperation.m */; };
 		6ADD681216E1070400E1377C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6ADD681116E1070100E1377C /* Default@2x.png */; };
+		6ADD681916E1ACB400E1377C /* Jacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD681816E1ACB300E1377C /* Jacket.m */; };
+		6ADD681A16E1ACB400E1377C /* Jacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD681816E1ACB300E1377C /* Jacket.m */; };
+		6ADD681C16E1B8BA00E1377C /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6ADD681B16E1B8B800E1377C /* noimage.jpg */; };
+		6ADD681D16E1B8BA00E1377C /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6ADD681B16E1B8B800E1377C /* noimage.jpg */; };
 		6AEB3AB416BFF44500F0EC1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB316BFF44500F0EC1F /* UIKit.framework */; };
 		6AEB3AB616BFF44500F0EC1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB516BFF44500F0EC1F /* Foundation.framework */; };
 		6AEB3AB816BFF44500F0EC1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB716BFF44500F0EC1F /* CoreGraphics.framework */; };
@@ -101,6 +105,9 @@
 		6ADD680916DE65A200E1377C /* MultiRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiRequestOperation.h; sourceTree = "<group>"; };
 		6ADD680A16DE65A200E1377C /* MultiRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiRequestOperation.m; sourceTree = "<group>"; };
 		6ADD681116E1070100E1377C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		6ADD681716E1ACB300E1377C /* Jacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jacket.h; sourceTree = "<group>"; };
+		6ADD681816E1ACB300E1377C /* Jacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jacket.m; sourceTree = "<group>"; };
+		6ADD681B16E1B8B800E1377C /* noimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noimage.jpg; sourceTree = "<group>"; };
 		6AEB3AAF16BFF44500F0EC1F /* OthermanRecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OthermanRecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEB3AB316BFF44500F0EC1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6AEB3AB516BFF44500F0EC1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -207,6 +214,8 @@
 				6ADD67ED16DBAB7800E1377C /* Player.m */,
 				6ADD67EE16DBAB7800E1377C /* TrackList.h */,
 				6ADD67EF16DBAB7800E1377C /* TrackList.m */,
+				6ADD681716E1ACB300E1377C /* Jacket.h */,
+				6ADD681816E1ACB300E1377C /* Jacket.m */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -270,6 +279,7 @@
 				6AEB3AC816BFF44500F0EC1F /* MainStoryboard_iPad.storyboard */,
 				6ADD67CB16DA738800E1377C /* ReleaseListViewController.h */,
 				6ADD67CC16DA738800E1377C /* ReleaseListViewController.m */,
+				6ADD681B16E1B8B800E1377C /* noimage.jpg */,
 				6ADD67C516DA4C0D00E1377C /* PlayerViewController.h */,
 				6ADD67C616DA4C0D00E1377C /* PlayerViewController.m */,
 				6ADD67C216DA4BA400E1377C /* AlbumListViewController.h */,
@@ -399,6 +409,7 @@
 				6AEB3AD616BFF44500F0EC1F /* second.png in Resources */,
 				6AEB3AD816BFF44500F0EC1F /* second@2x.png in Resources */,
 				6ADD681216E1070400E1377C /* Default@2x.png in Resources */,
+				6ADD681C16E1B8BA00E1377C /* noimage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AEB3AEA16BFF44500F0EC1F /* InfoPlist.strings in Resources */,
+				6ADD681D16E1B8BA00E1377C /* noimage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +465,7 @@
 				6ADD67FA16DBB95B00E1377C /* iPhoneStreamingPlayerViewController.m in Sources */,
 				6ADD67FD16DBCA6300E1377C /* AudioStreamer.m in Sources */,
 				6ADD680B16DE65A200E1377C /* MultiRequestOperation.m in Sources */,
+				6ADD681916E1ACB400E1377C /* Jacket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +477,7 @@
 				6ADD67FB16DBB95B00E1377C /* iPhoneStreamingPlayerViewController.m in Sources */,
 				6ADD67FE16DBCA6300E1377C /* AudioStreamer.m in Sources */,
 				6ADD680C16DE65A200E1377C /* MultiRequestOperation.m in Sources */,
+				6ADD681A16E1ACB400E1377C /* Jacket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

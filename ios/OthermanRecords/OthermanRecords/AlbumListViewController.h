@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TrackList.h"
+#import "Jacket.h"
 
-@interface AlbumListViewController : UITableViewController <TrackDelegate>
+@interface AlbumListViewController : UITableViewController <TrackDelegate,JacketDelegate>
 @property NSString *cutnum;
 
 

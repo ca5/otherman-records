@@ -71,30 +71,45 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"table num:%d", [[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum]  count]);
-    return  [[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum]  count] + 1;
+    if (section == 1) {
+		return [[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum]  count];
+	}else {
+		return 1;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+
     
     // Configure the cell...
-    if(indexPath.row > 0){
-        cell.textLabel.text = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row - 1] objectForKey:@"title"];
+    if(indexPath.section == 1){
+        static NSString *CellIdentifier = @"TrackCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        NSLog(@"row:%d",indexPath.row);
+        cell.textLabel.text = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"title"];
+        return cell;
     }else{
+        static NSString *CellIdentifier = @"AlbumCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        NSLog(@"row:%d , txt:%@ ",indexPath.row ,cell.textLabel.text);
+        cell.imageView.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:_cutnum];
+        /*
         UIImage *img = [_images objectForKey:_cutnum];
         if(img != nil){
             cell.imageView.image = [_images objectForKey:_cutnum];
@@ -111,16 +126,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                      options:NSKeyValueObservingOptionNew context:indexPath.row];
             [_queue addOperation:mro];
         }
+         */
+        return cell;
     }
-    return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath > 0){
-        _tracknum = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row -1] objectForKey:@"num"];
+    if(indexPath.section == 1){
+        _tracknum = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"num"];
 
         [self performSegueWithIdentifier:@"Player" sender:self];
     }
@@ -155,6 +171,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     UITableView *tableView = (UITableView *)self.view;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UIImage *img = [[UIImage alloc] initWithData:((MultiRequestOperation *)object).data];
+    NSLog(@"observe:%d",(NSInteger)context);
     cell.imageView.image = img;
     NSDictionary *album = [[AlbumList instanceWithDelegate:nil] objectAtIndex:context];
     if(img != nil){
@@ -173,4 +190,22 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     // キー値監視を解除する
     [object removeObserver:self forKeyPath:keyPath];
 }
+
+-(void) jacketDidFinishLoadingWithCutnum:(NSString *)cutnum
+{
+    if([_cutnum isEqualToString:cutnum]){
+        int i = 0;
+        for(; i < [[AlbumList instanceWithDelegate:self] count]; i++ ){
+            if(cutnum == [[[AlbumList instanceWithDelegate:self] objectAtIndex:i] objectForKey:@"cutnum"]){
+                break;
+            }
+        }
+        UITableView *tableView = (UITableView *)self.view;
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        cell.imageView.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:cutnum];
+        [cell setNeedsLayout];
+    }
+}
+
+
 @end

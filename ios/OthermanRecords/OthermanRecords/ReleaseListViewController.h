@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "AlbumList.h"
 #import "MultiRequestOperation.h"
+#import "Jacket.h"
 
 
-@interface ReleaseListViewController : UITableViewController <AlbumDelegate>
+@interface ReleaseListViewController : UITableViewController <AlbumDelegate, JacketDelegate>
 
 @end

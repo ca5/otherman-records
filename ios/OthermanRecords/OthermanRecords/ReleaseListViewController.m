@@ -78,23 +78,7 @@
     // Configure the cell...
     NSDictionary *album = [[AlbumList instanceWithDelegate:self] objectAtIndex:indexPath.row];
     cell.textLabel.text = [album objectForKey:@"album"];
-    UIImage *img = [_images objectForKey:[album objectForKey:@"cutnum"]];
-    if(img != nil){
-        cell.imageView.image = [_images objectForKey:[album objectForKey:@"cutnum"]];
-    }else{
-        //load thumbnail image
-        NSURL *thumburl = [[AlbumList instanceWithDelegate:self] jacketURLWithCutnum:[album objectForKey:@"cutnum"]];
-        NSLog(@"thumburl: %@", thumburl);
-        MultiRequestOperation *mro = [[MultiRequestOperation alloc] initWithURL:thumburl];
-        if(_queue == nil){
-            _queue = [[NSOperationQueue alloc] init];
-        }
-
-        [mro addObserver:self forKeyPath:@"isFinished"
-                  options:NSKeyValueObservingOptionNew context:indexPath.row];
-        [_queue addOperation:mro];
-    }
-    
+    cell.imageView.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:[album objectForKey:@"cutnum"]];
     return cell;
 }
 
@@ -132,6 +116,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 -(void)albumDidFinishLoading
 {
+    [[Jacket instanceWithDelegate:self] load];
     [self.tableView reloadData];
 }
 
@@ -141,29 +126,19 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLog(@"[ERR]Load Album error:%@", error_str);
 }
 
-- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object
-                        change:(NSDictionary*)change context:(void*)context
+-(void) jacketDidFinishLoadingWithCutnum:(NSString *)cutnum
 {
-    UITableView *tableView = (UITableView *)self.view;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(NSInteger)context inSection:0]];
-    UIImage *img = [[UIImage alloc] initWithData:((MultiRequestOperation *)object).data];
-    cell.imageView.image = img;
-    NSDictionary *album = [[AlbumList instanceWithDelegate:self] objectAtIndex:context];
-    if(img != nil){
-        [_images setObject:img forKey:[album objectForKey:@"cutnum"]];
+    int i = 0;
+    for(; i < [[AlbumList instanceWithDelegate:self] count]; i++ ){
+        if(cutnum == [[[AlbumList instanceWithDelegate:self] objectAtIndex:i] objectForKey:@"cutnum"]){
+            break;
+        }
     }
-
-    //cell.textLabel.text = @"loaded";
-    [cell setNeedsLayout];
-    
-    
-    // データの長さを取得する
-    unsigned int    length;
-    length = [((MultiRequestOperation *)object).data length];
-    NSLog(@"data length %d id:%d", length, (int)context);
-    
-    // キー値監視を解除する
-    [object removeObserver:self forKeyPath:keyPath];
+    UITableView *tableView = (UITableView *)self.view;
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(NSInteger)i inSection:0]];
+    cell.imageView.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:cutnum];
+    [cell setNeedsLayout];   
 }
+
 
 @end

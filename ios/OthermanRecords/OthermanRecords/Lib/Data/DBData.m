@@ -198,9 +198,7 @@
         for(int i=0; i<maxNum; i++){
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
             NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-            NSLog(@"load localData [%d] :%@",i , [[object valueForKey:@"timeStamp"] description]);
             [super addObject:[object dictionaryWithValuesForKeys:[[[object entity] attributesByName] allKeys]]];
-            NSLog(@"load localData2 [%d] :%@",i , [[self objectAtIndex:i] description]);
         }
     }
     return YES;

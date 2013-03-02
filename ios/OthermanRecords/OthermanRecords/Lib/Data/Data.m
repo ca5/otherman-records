@@ -10,12 +10,12 @@
 
 @implementation Data
 {
-    NSMutableArray *list;
+    NSMutableArray *_list;
 }
 
 - (id)init
 {
-    list = [NSMutableArray array];
+    _list = [NSMutableArray array];
     return self;
 }
 
@@ -26,52 +26,57 @@
 
 - (BOOL)loadWithCache:(BOOL)cache
 {
-    //should be overridden
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     return YES;
 }
 
 - (BOOL)clear
 {
-    list = [NSMutableArray array];
+    _list = [NSMutableArray array];
     return YES;
+}
+
+- (BOOL)setList:(NSMutableArray *)list;
+{
+    _list = list;
 }
 
 /**************** Override from Mutable Array	****************/
 - (void)addObject:(id)anObject
 {
-    [list addObject:anObject];
+    [_list addObject:anObject];
 }
 
 - (void)insertObject:(id)anObject atIndex:(NSUInteger)index
 {
-    [list insertObject:anObject atIndex:index];
+    [_list insertObject:anObject atIndex:index];
 }
 
 - (void)removeLastObject
 {
-    [list removeLastObject];
+    [_list removeLastObject];
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
-    [list removeObjectAtIndex:index];
+    [_list removeObjectAtIndex:index];
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    [list replaceObjectAtIndex:index withObject:anObject];
+    [_list replaceObjectAtIndex:index withObject:anObject];
 }
 
 /**************** Override from Immutable Array	****************/
 
 - (NSUInteger)count
 {
-    return [list count];
+    return [_list count];
 }
 
 - (id)objectAtIndex:(NSUInteger)index
 {
-    return [list objectAtIndex:index];
+    return [_list objectAtIndex:index];
 }
 
 

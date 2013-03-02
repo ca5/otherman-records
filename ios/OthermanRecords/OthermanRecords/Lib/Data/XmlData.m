@@ -82,9 +82,7 @@ BOOL use_cache = YES;
 {
     NSData *raw_data = [[NSData alloc] initWithContentsOfFile:_file_path];
     NSArray *dlist = [self parseStatuses:raw_data];
-    for (uint n = 0; n < [dlist count]; n++) {
-        [self addObject:[dlist objectAtIndex:n]];
-    }
+    [self setList:(NSMutableArray *)dlist];
     [_delegate didFinishLoading];
 }
 
@@ -177,10 +175,7 @@ BOOL use_cache = YES;
     }
     [self saveLocalFile:raw_string];
     NSArray *dlist = [self parseStatuses:async_data];
-    for (uint n = 0; n < [dlist count]; n++) {        
-        [self addObject:[dlist objectAtIndex:n]];
-    }
-    
+    [self setList:(NSMutableArray *)dlist];
     [_delegate didFinishLoading];
 }
 /* async connection delegated methods -end */
