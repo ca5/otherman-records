@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Data.h"
 
-@interface LocalData : Data <NSFetchedResultsControllerDelegate>
+@interface DBData : Data <NSFetchedResultsControllerDelegate>
 {
     NSString *_tableName;
     NSString *_sortKeyName;

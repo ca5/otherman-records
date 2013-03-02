@@ -6,10 +6,10 @@
 //  Copyright (c) 2012年 . All rights reserved.
 //
 
-#import "LocalData.h"
+#import "DBData.h"
 #import "AppDelegate.h"
 
-@implementation LocalData
+@implementation DBData
 {
 
 }

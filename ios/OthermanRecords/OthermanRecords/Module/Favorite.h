@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LocalData.h"
+#import "DBData.h"
 
-@interface Favorite : LocalData
+@interface Favorite : DBData
 
 - (id)init;
 - (void)addFavoliteWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;

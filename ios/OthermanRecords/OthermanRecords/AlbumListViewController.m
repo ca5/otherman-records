@@ -161,7 +161,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [_images setObject:img forKey:[album objectForKey:@"cutnum"]];
     }
     
-    //cell.textLabel.text = @"loaded";
+    cell.textLabel.text = @"loaded";
     [cell setNeedsLayout];
     
     

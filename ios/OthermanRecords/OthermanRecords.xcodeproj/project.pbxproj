@@ -17,7 +17,7 @@
 		6ADD67C716DA4C0D00E1377C /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67C616DA4C0D00E1377C /* PlayerViewController.m */; };
 		6ADD67CD16DA738800E1377C /* ReleaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67CC16DA738800E1377C /* ReleaseListViewController.m */; };
 		6ADD67E316DBAB2D00E1377C /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67DB16DBAB2D00E1377C /* Data.m */; };
-		6ADD67E416DBAB2D00E1377C /* LocalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67DD16DBAB2D00E1377C /* LocalData.m */; };
+		6ADD67E416DBAB2D00E1377C /* DBData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67DD16DBAB2D00E1377C /* DBData.m */; };
 		6ADD67E516DBAB2D00E1377C /* XmlData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67DF16DBAB2D00E1377C /* XmlData.m */; };
 		6ADD67E616DBAB2D00E1377C /* StreamingPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67E216DBAB2D00E1377C /* StreamingPlayer.m */; };
 		6ADD67F016DBAB7800E1377C /* AlbumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67E916DBAB7800E1377C /* AlbumList.m */; };
@@ -78,8 +78,8 @@
 		6ADD67CC16DA738800E1377C /* ReleaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseListViewController.m; sourceTree = "<group>"; };
 		6ADD67DA16DBAB2D00E1377C /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		6ADD67DB16DBAB2D00E1377C /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
-		6ADD67DC16DBAB2D00E1377C /* LocalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalData.h; sourceTree = "<group>"; };
-		6ADD67DD16DBAB2D00E1377C /* LocalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalData.m; sourceTree = "<group>"; };
+		6ADD67DC16DBAB2D00E1377C /* DBData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBData.h; sourceTree = "<group>"; };
+		6ADD67DD16DBAB2D00E1377C /* DBData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBData.m; sourceTree = "<group>"; };
 		6ADD67DE16DBAB2D00E1377C /* XmlData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlData.h; sourceTree = "<group>"; };
 		6ADD67DF16DBAB2D00E1377C /* XmlData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlData.m; sourceTree = "<group>"; };
 		6ADD67E116DBAB2D00E1377C /* StreamingPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingPlayer.h; sourceTree = "<group>"; };
@@ -177,8 +177,8 @@
 			children = (
 				6ADD67DA16DBAB2D00E1377C /* Data.h */,
 				6ADD67DB16DBAB2D00E1377C /* Data.m */,
-				6ADD67DC16DBAB2D00E1377C /* LocalData.h */,
-				6ADD67DD16DBAB2D00E1377C /* LocalData.m */,
+				6ADD67DC16DBAB2D00E1377C /* DBData.h */,
+				6ADD67DD16DBAB2D00E1377C /* DBData.m */,
 				6ADD67DE16DBAB2D00E1377C /* XmlData.h */,
 				6ADD67DF16DBAB2D00E1377C /* XmlData.m */,
 			);
@@ -443,7 +443,7 @@
 				6ADD67C716DA4C0D00E1377C /* PlayerViewController.m in Sources */,
 				6ADD67CD16DA738800E1377C /* ReleaseListViewController.m in Sources */,
 				6ADD67E316DBAB2D00E1377C /* Data.m in Sources */,
-				6ADD67E416DBAB2D00E1377C /* LocalData.m in Sources */,
+				6ADD67E416DBAB2D00E1377C /* DBData.m in Sources */,
 				6ADD67E516DBAB2D00E1377C /* XmlData.m in Sources */,
 				6ADD67E616DBAB2D00E1377C /* StreamingPlayer.m in Sources */,
 				6ADD67F016DBAB7800E1377C /* AlbumList.m in Sources */,
