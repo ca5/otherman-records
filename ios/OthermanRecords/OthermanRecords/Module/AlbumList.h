@@ -12,7 +12,7 @@
 @class AlbumList;
 
 @protocol AlbumDelegate
--(void) didFailWithError:(NSError *)error;
+-(void) albumDidFailWithError:(NSError *)error;
 -(void) albumDidFinishLoading;
 @end
 

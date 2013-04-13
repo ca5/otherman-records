@@ -10,7 +10,7 @@
 #import "AlbumList.h"
 
 @protocol JacketDelegate
--(void) didFailWithError:(NSError *)error;
+-(void) jacketDidFailWithError:(NSError *)error;
 -(void) jacketDidFinishLoadingWithCutnum:(NSString *)cutnum;
 @end
 

@@ -96,7 +96,7 @@ NSString * date = nil;
 
 -(void)didFailWithError:(NSError *)error
 {
-    [trackDelegate didFailWithError:error];
+    [trackDelegate trackDidFailWithError:error];
 }
 
 - (NSArray *)listWithCutnum:(NSString *)cutnum

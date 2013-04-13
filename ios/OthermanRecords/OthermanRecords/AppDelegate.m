@@ -23,14 +23,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    /*
-    //album test
-    [[AlbumList instanceWithDelegate:self] load];
-    [[TrackList instanceWithDelegate:self] load];
-    
-    //[[StreamingPlayer getInstance] startWithURL:@"http://archive.org/download/OTMN024/01-grayscale.mp3"];
-     */
-
 /* Favorite test
     
     Favorite *favorite = [[Favorite alloc] init];
@@ -43,25 +35,7 @@
 
 
 */
-    _queue = [[NSOperationQueue alloc] init];
 
-    NSLog(@"ope1");
-    MultiRequestOperation *ope1 = [[MultiRequestOperation alloc] initWithURL:[NSURL URLWithString:@"http://www.otherman-records.com/xmls/releases"]];
-    
-    
-    NSLog(@"ope2");
-    MultiRequestOperation *ope2 = [[MultiRequestOperation alloc] initWithURL:[NSURL URLWithString:@"http://ja.wikipedia.org/wiki/Extensible_Markup_Language"]];
-    
-    NSLog(@"start ope1");
-    [ope1 addObserver:self forKeyPath:@"isFinished"
-              options:NSKeyValueObservingOptionNew context:1];
-    NSLog(@"start ope1");
-    [_queue addOperation:ope1];
-    
-    NSLog(@"start ope2");
-    [ope2 addObserver:self forKeyPath:@"isFinished"
-              options:NSKeyValueObservingOptionNew context:2];
-    [_queue addOperation:ope2];
 
     
     //push notifiacation test
@@ -71,18 +45,6 @@
     
     // Override point for customization after application launch.
     return YES;
-}
-
-- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object
-                        change:(NSDictionary*)change context:(void*)context
-{
-    // データの長さを取得する
-    unsigned int    length;
-    length = [((MultiRequestOperation *)object).data length];
-    NSLog(@"data length %d id:%d", length, (int)context);
-    
-    // キー値監視を解除する
-    [object removeObserver:self forKeyPath:keyPath];
 }
 
 /*
@@ -120,24 +82,6 @@
 }
  */
 
-/**** XmlData delegated function ****/
-- (void)albumDidFinishLoading
-{
-    NSLog(@"album:\n %@", [[AlbumList instanceWithDelegate:self] description]);
-
-}
-
-- (void)trackDidFinishLoading
-{
-    NSLog(@"track:\n %@", [[TrackList instanceWithDelegate:self] description]);
-    NSLog(@"track OTMN001:\n %@", [[TrackList instanceWithDelegate:self] listWithCutnum:@"OTMN001"]);
-}
-
-- (void)didFailWithError:(NSError *)error
-{
-    
-}
-/**** XmlData delegated function -end****/
 
 							
 - (void)applicationWillResignActive:(UIApplication *)application

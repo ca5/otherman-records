@@ -106,7 +106,7 @@ id<AlbumDelegate> albumDelegate = nil;
 
 -(void)didFailWithError:(NSError *)error
 {
-    [albumDelegate didFailWithError:error];
+    [albumDelegate albumDidFailWithError:error];
 }
 
 - (NSDictionary *)albumWithCutnum:(NSString *)cutnum

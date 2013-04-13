@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlbumList.h"
 
 
-@interface FirstViewController : UIViewController <AlbumDelegate>
+@interface FirstViewController : UIViewController
 
 @end

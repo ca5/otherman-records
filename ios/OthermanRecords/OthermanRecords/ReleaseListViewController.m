@@ -139,7 +139,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     [self.tableView reloadData];
 }
 
--(void)didFailWithError:(NSError *)error
+-(void)albumDidFailWithError:(NSError *)error
 {
     NSString *error_str = [error localizedDescription];
     NSLog(@"[ERR]Load Album error:%@", error_str);
@@ -159,6 +159,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     thumbnail.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:cutnum];
     [cell setNeedsLayout];
 
+}
+
+-(void)jacketDidFailWithError:(NSError *)error
+{
+    NSString *error_str = [error localizedDescription];
+    NSLog(@"[ERR]Load Jacket error:%@", error_str);
 }
 
 

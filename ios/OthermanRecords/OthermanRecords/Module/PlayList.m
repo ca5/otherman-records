@@ -118,7 +118,7 @@
     [self setFromTrackList];
 }
 
--(void)didFailWithError:(NSError *)error
+-(void)trackDidFailWithError:(NSError *)error
 {
     NSString *error_str = [error localizedDescription];
     NSLog(@"[ERR]Playlist cannot get TrackData:%@", error_str);

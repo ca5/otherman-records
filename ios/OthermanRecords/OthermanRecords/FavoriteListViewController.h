@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AlbumList.h"
+#import "MultiRequestOperation.h"
+#import "Jacket.h"
 
-@interface FavoriteListViewController : UITableViewController
+@interface FavoriteListViewController : UITableViewController <AlbumDelegate, JacketDelegate>
 
 @end

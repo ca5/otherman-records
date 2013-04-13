@@ -89,9 +89,9 @@ id<JacketDelegate> jacketDelegate = nil;
 
 
 /**************** delegated from AlbumList	****************/
--(void) didFailWithError:(NSError *)error
+-(void) albumDidFailWithError:(NSError *)error
 {
-    [jacketDelegate didFailWithError:error];
+    [jacketDelegate jacketDidFailWithError:error];
 }
 
 -(void) albumDidFinishLoading

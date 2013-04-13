@@ -7,8 +7,6 @@
 //
 
 #import "Player.h"
-#import "TrackList.h"
-#import "TrackList.h"
 #import "PlayList.h"
 
 @implementation Player
@@ -227,7 +225,7 @@
     [self startWithCutnum:_new_cutnum tracknum:_new_tracknum];
 }
 
--(void)didFailWithError:(NSError *)error
+-(void)trackDidFailWithError:(NSError *)error
 {
     NSString *error_str = [error localizedDescription];
     NSLog(@"[ERR]Player cannot get TrackData:%@", error_str);

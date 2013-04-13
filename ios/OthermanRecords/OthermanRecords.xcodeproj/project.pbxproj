@@ -53,7 +53,6 @@
 		6AEB3AC716BFF44500F0EC1F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB3AC516BFF44500F0EC1F /* MainStoryboard_iPhone.storyboard */; };
 		6AEB3ACA16BFF44500F0EC1F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AEB3AC816BFF44500F0EC1F /* MainStoryboard_iPad.storyboard */; };
 		6AEB3ACD16BFF44500F0EC1F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB3ACC16BFF44500F0EC1F /* FirstViewController.m */; };
-		6AEB3AD416BFF44500F0EC1F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEB3AD316BFF44500F0EC1F /* SecondViewController.m */; };
 		6AEB3AE016BFF44500F0EC1F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3ADF16BFF44500F0EC1F /* SenTestingKit.framework */; };
 		6AEB3AE116BFF44500F0EC1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB316BFF44500F0EC1F /* UIKit.framework */; };
 		6AEB3AE216BFF44500F0EC1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB516BFF44500F0EC1F /* Foundation.framework */; };
@@ -136,8 +135,6 @@
 		6AEB3AC916BFF44500F0EC1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		6AEB3ACB16BFF44500F0EC1F /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		6AEB3ACC16BFF44500F0EC1F /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		6AEB3AD216BFF44500F0EC1F /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		6AEB3AD316BFF44500F0EC1F /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		6AEB3ADE16BFF44500F0EC1F /* OthermanRecordsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OthermanRecordsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEB3ADF16BFF44500F0EC1F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6AEB3AE716BFF44500F0EC1F /* OthermanRecordsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OthermanRecordsTests-Info.plist"; sourceTree = "<group>"; };
@@ -312,8 +309,6 @@
 				6AE34E2817190D3400EE293F /* FavoriteListViewController.m */,
 				6AEB3ACB16BFF44500F0EC1F /* FirstViewController.h */,
 				6AEB3ACC16BFF44500F0EC1F /* FirstViewController.m */,
-				6AEB3AD216BFF44500F0EC1F /* SecondViewController.h */,
-				6AEB3AD316BFF44500F0EC1F /* SecondViewController.m */,
 				6AEB3B0516C00EF900F0EC1F /* Setting.h */,
 				6AEB3B0616C00EF900F0EC1F /* Setting.m */,
 				6AEB3AC516BFF44500F0EC1F /* MainStoryboard_iPhone.storyboard */,
@@ -472,7 +467,6 @@
 				6AEB3AC016BFF44500F0EC1F /* main.m in Sources */,
 				6AEB3AC416BFF44500F0EC1F /* AppDelegate.m in Sources */,
 				6AEB3ACD16BFF44500F0EC1F /* FirstViewController.m in Sources */,
-				6AEB3AD416BFF44500F0EC1F /* SecondViewController.m in Sources */,
 				6AEB3B0716C00EF900F0EC1F /* Setting.m in Sources */,
 				6ADD67B616D3C87A00E1377C /* OthermanTables.xcdatamodeld in Sources */,
 				6ADD67C416DA4BA400E1377C /* AlbumListViewController.m in Sources */,

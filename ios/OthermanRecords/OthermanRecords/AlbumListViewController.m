@@ -9,8 +9,8 @@
 #import "AlbumListViewController.h"
 #import "PlayerViewController.h"
 #import "MultiRequestOperation.h"
-#import "AlbumList.h";
-#import "PlayList.h";
+#import "AlbumList.h"
+#import "PlayList.h"
 #import "MBProgressHUD.h"
 
 @implementation AlbumListViewController
@@ -185,10 +185,22 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 }
 
--(void)didFailWithError:(NSError *)error
+-(void)trackDidFailWithError:(NSError *)error
 {
     NSString *error_str = [error localizedDescription];
     NSLog(@"[ERR]Load Track error:%@", error_str);
+}
+
+-(void)albumDidFailWithError:(NSError *)error
+{
+    NSString *error_str = [error localizedDescription];
+    NSLog(@"[ERR]Load Album error:%@", error_str);
+}
+
+-(void)jacketDidFailWithError:(NSError *)error
+{
+    NSString *error_str = [error localizedDescription];
+    NSLog(@"[ERR]Load Jacket error:%@", error_str);
 }
 
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object

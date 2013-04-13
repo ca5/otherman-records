@@ -13,7 +13,7 @@
 
 
 @protocol TrackDelegate
--(void) didFailWithError:(NSError *)error;
+-(void) trackDidFailWithError:(NSError *)error;
 -(void) trackDidFinishLoading;
 @end
 

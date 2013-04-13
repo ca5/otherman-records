@@ -7,17 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlbumList.h"
-#import "TrackList.h"
-#import "StreamingPlayer.h"
-#import "DBData.h"
-#import "MultiRequestOperation.h"
+#import "StreamingPlayer.h" //for test
+#import "DBData.h" //for test
 
 
 
-
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate,AlbumDelegate,TrackDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
