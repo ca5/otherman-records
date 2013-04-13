@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-//#define RELEASES_XML_URL @"http://www.otherman-records.com/xmls/releases"
-#define RELEASES_XML_URL @"http://ca5.sakura.ne.jp/otmntest/releases"
+#define RELEASES_XML_URL @"http://www.otherman-records.com/xmls/releases"
+//#define RELEASES_XML_URL @"http://ca5.sakura.ne.jp/otmntest/releases"
 #define RELEASES_XML_FILE @"releases.xml"
 
 @interface Setting : NSObject

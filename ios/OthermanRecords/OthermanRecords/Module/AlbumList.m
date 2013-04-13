@@ -121,16 +121,12 @@ id<AlbumDelegate> albumDelegate = nil;
 
 - (NSURL *)jacketURLWithCutnum:(NSString *)cutnum
 {
-    return [NSURL URLWithString:
-            [NSString stringWithFormat:@"http://www.otherman-records.com/images/releases/%@", [[self albumWithCutnum:cutnum] objectForKey:@"jacket"]]
-            ];
+    return [NSURL URLWithString:[[self albumWithCutnum:cutnum] objectForKey:@"jacket"]];
 }
 
 - (NSURL *)thumbnailURLWithCutnum:(NSString *)cutnum
 {
-    NSLog(@"album: %@", [self albumWithCutnum:cutnum]);
-    return [NSURL URLWithString:
-            [NSString stringWithFormat:@"http://archive.org/download/%@/%@", cutnum, [[self albumWithCutnum:cutnum] objectForKey:@"thumbnail"]]
-            ];
+    return [NSURL URLWithString:[[self albumWithCutnum:cutnum] objectForKey:@"tumbnail"]];
+
 }
 @end

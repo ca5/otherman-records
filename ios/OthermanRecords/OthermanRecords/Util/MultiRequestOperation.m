@@ -33,6 +33,7 @@
 }
 
 - (BOOL)isFinished {
+    //NSLog(@"isFinished %@", _opeid);
     return _isFinished;
 }
 

@@ -13,15 +13,8 @@
 -(void) didFinishLoading;
 @end
 
-
 @interface XmlData : Data <NSXMLParserDelegate>
-{
-    NSString *_file_path;
-    NSString *_file_name;
-    NSString *_url_str;
-    id _delegate;
 
-}
 @property (retain , nonatomic) NSMutableString *currentXpath;
 @property (retain , nonatomic) NSMutableArray *statuses;
 @property (retain , nonatomic) NSMutableDictionary *currentStatus;

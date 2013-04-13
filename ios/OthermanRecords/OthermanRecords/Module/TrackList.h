@@ -11,10 +11,12 @@
 
 @class TrackList;
 
+
 @protocol TrackDelegate
 -(void) didFailWithError:(NSError *)error;
 -(void) trackDidFinishLoading;
 @end
+
 
 @interface TrackList : XmlData <XmlDataDelegate>
 

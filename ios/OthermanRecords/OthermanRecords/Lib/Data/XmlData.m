@@ -10,7 +10,12 @@
 #import "Setting.h"
 
 @implementation XmlData
-
+{
+    NSString *_file_path;
+    NSString *_file_name;
+    NSString *_url_str;
+    id<XmlDataDelegate> _delegate;
+}
 
 NSURLConnection *connection = nil;
 NSMutableData *async_data = nil;
@@ -30,8 +35,6 @@ BOOL use_cache = YES;
     _delegate = delegate;
     return [super init];
 }
-
-
 
 - (BOOL)loadWithCache:(BOOL)cache
 {

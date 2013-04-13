@@ -9,9 +9,12 @@
 #import "TrackList.h"
 #import "Setting.h"
 
+
+
 @implementation TrackList
 id<TrackDelegate> trackDelegate = nil;
 NSString * cutnum = nil;
+NSString * date = nil;
 
 
 +(TrackList *)instanceWithDelegate:(id<TrackDelegate>) delegate
@@ -48,6 +51,7 @@ NSString * cutnum = nil;
     
     if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/"]) {
         [self.currentStatus setValue:cutnum forKey:@"cutnum"];
+        [self.currentStatus setValue:cutnum forKey:@"date"];
         [self.statuses addObject:self.currentStatus];
         self.currentStatus = nil;
         
@@ -73,6 +77,8 @@ NSString * cutnum = nil;
         [self.currentStatus setValue:textData forKey:@"num"];
     }else if ([self.currentXpath isEqualToString: @"releases/release/cutnum/"]) {
         cutnum = textData;
+    }else if ([self.currentXpath isEqualToString: @"releases/release/date/"]) {
+        date = textData;
     }
     
     int delLength = [elementName length] + 1;
@@ -84,6 +90,7 @@ NSString * cutnum = nil;
 -(void)didFinishLoading
 {
     NSLog(@"didFinishLoading(from XmlDataDelegate)");
+    [self sort];
     [trackDelegate trackDidFinishLoading];
 }
 
@@ -117,8 +124,60 @@ NSString * cutnum = nil;
 - (NSURL *)trackURLWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum
 {
     return [NSURL URLWithString:
-                [NSString stringWithFormat:@"http://archive.org/download/%@/%@", cutnum, [[self trackWithCutnum:cutnum tracknum:tracknum] objectForKey:@"filename"]]
-            ];
+            [[self trackWithCutnum:cutnum tracknum:tracknum] objectForKey:@"filename"]];
+}
+
+
+-(void)sort
+{
+    [self setList:[[self sortedArrayUsingFunction:comparator context:nil] mutableCopy]];
+}
+
+int comparator(id val1, id val2, void *context)
+{
+    //compare date
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"YYYY/MM/dd"];
+    NSDate *date1 = [df dateFromString:[(NSDictionary *)val1 objectForKey:@"date"]];
+    NSDate *date2 = [df dateFromString:[(NSDictionary *)val2 objectForKey:@"date"]];
+    
+    NSComparisonResult result = [date1 compare:date2];
+    switch(result){
+        case NSOrderedSame:
+            // date1 = date2
+            break;
+            
+        case NSOrderedAscending:
+        case NSOrderedDescending:
+            // date1 != date2
+            return result;
+    }
+    
+    //compare cutnum
+    NSString *cutnum1 = [(NSDictionary *)val1 objectForKey:@"cutnum"];
+    NSString *cutnum2 = [(NSDictionary *)val2 objectForKey:@"cutnum"];
+    result = [cutnum1 compare:cutnum2];
+    switch(result){
+        case NSOrderedSame:
+            // cutnum1 = cutnum2
+            break;
+            
+        case NSOrderedAscending:
+        case NSOrderedDescending:
+            // cutnum1 != cutnum2
+            return result;
+    }
+    
+    //compare tracknum
+    float num1 = [[(NSDictionary *)val1 objectForKey:@"num"] floatValue];
+    float num2 = [[(NSDictionary *)val2 objectForKey:@"num"] floatValue];
+    if(num1 < num2){
+        return NSOrderedAscending;
+    } else if (num1 < num2){
+        return NSOrderedDescending;
+    }else{
+        return NSOrderedSame;
+    }
 }
 
 

@@ -10,6 +10,7 @@
 		6A3A706A16D12E3700CD3D8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB0077E16CA7CBE00717430 /* AudioToolbox.framework */; };
 		6A3A706B16D12E3800CD3D8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB0077E16CA7CBE00717430 /* AudioToolbox.framework */; };
 		6A3A706D16D12E8000CD3D8E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3A706C16D12E8000CD3D8E /* CFNetwork.framework */; };
+		6AB3B3EC16E3BAE00021C591 /* PlayList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB3B3EB16E3BAE00021C591 /* PlayList.m */; };
 		6ADD67AA16D3C23900E1377C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3A706C16D12E8000CD3D8E /* CFNetwork.framework */; };
 		6ADD67B316D3C80700E1377C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADD67B216D3C80700E1377C /* CoreData.framework */; };
 		6ADD67B616D3C87A00E1377C /* OthermanTables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD67B416D3C87A00E1377C /* OthermanTables.xcdatamodeld */; };
@@ -37,6 +38,8 @@
 		6ADD681A16E1ACB400E1377C /* Jacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD681816E1ACB300E1377C /* Jacket.m */; };
 		6ADD681C16E1B8BA00E1377C /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6ADD681B16E1B8B800E1377C /* noimage.jpg */; };
 		6ADD681D16E1B8BA00E1377C /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6ADD681B16E1B8B800E1377C /* noimage.jpg */; };
+		6AE34E2517171D7700EE293F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE34E2417171D7700EE293F /* MBProgressHUD.m */; };
+		6AE34E2617171E0600EE293F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE34E2417171D7700EE293F /* MBProgressHUD.m */; };
 		6AEB3AB416BFF44500F0EC1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB316BFF44500F0EC1F /* UIKit.framework */; };
 		6AEB3AB616BFF44500F0EC1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB516BFF44500F0EC1F /* Foundation.framework */; };
 		6AEB3AB816BFF44500F0EC1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB716BFF44500F0EC1F /* CoreGraphics.framework */; };
@@ -72,6 +75,8 @@
 /* Begin PBXFileReference section */
 		6A3A706C16D12E8000CD3D8E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6AB0077E16CA7CBE00717430 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6AB3B3EA16E3BAE00021C591 /* PlayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayList.h; sourceTree = "<group>"; };
+		6AB3B3EB16E3BAE00021C591 /* PlayList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayList.m; sourceTree = "<group>"; };
 		6ADD67B216D3C80700E1377C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6ADD67B516D3C87A00E1377C /* OthermanTables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OthermanTables.xcdatamodel; sourceTree = "<group>"; };
 		6ADD67C216DA4BA400E1377C /* AlbumListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumListViewController.h; sourceTree = "<group>"; };
@@ -108,6 +113,8 @@
 		6ADD681716E1ACB300E1377C /* Jacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jacket.h; sourceTree = "<group>"; };
 		6ADD681816E1ACB300E1377C /* Jacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jacket.m; sourceTree = "<group>"; };
 		6ADD681B16E1B8B800E1377C /* noimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noimage.jpg; sourceTree = "<group>"; };
+		6AE34E2317171D7700EE293F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		6AE34E2417171D7700EE293F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		6AEB3AAF16BFF44500F0EC1F /* OthermanRecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OthermanRecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEB3AB316BFF44500F0EC1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6AEB3AB516BFF44500F0EC1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -216,6 +223,8 @@
 				6ADD67EF16DBAB7800E1377C /* TrackList.m */,
 				6ADD681716E1ACB300E1377C /* Jacket.h */,
 				6ADD681816E1ACB300E1377C /* Jacket.m */,
+				6AB3B3EA16E3BAE00021C591 /* PlayList.h */,
+				6AB3B3EB16E3BAE00021C591 /* PlayList.m */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -223,6 +232,8 @@
 		6ADD680816DE653400E1377C /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				6AE34E2317171D7700EE293F /* MBProgressHUD.h */,
+				6AE34E2417171D7700EE293F /* MBProgressHUD.m */,
 				6ADD680916DE65A200E1377C /* MultiRequestOperation.h */,
 				6ADD680A16DE65A200E1377C /* MultiRequestOperation.m */,
 			);
@@ -466,6 +477,8 @@
 				6ADD67FD16DBCA6300E1377C /* AudioStreamer.m in Sources */,
 				6ADD680B16DE65A200E1377C /* MultiRequestOperation.m in Sources */,
 				6ADD681916E1ACB400E1377C /* Jacket.m in Sources */,
+				6AB3B3EC16E3BAE00021C591 /* PlayList.m in Sources */,
+				6AE34E2617171E0600EE293F /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +491,7 @@
 				6ADD67FE16DBCA6300E1377C /* AudioStreamer.m in Sources */,
 				6ADD680C16DE65A200E1377C /* MultiRequestOperation.m in Sources */,
 				6ADD681A16E1ACB400E1377C /* Jacket.m in Sources */,
+				6AE34E2517171D7700EE293F /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

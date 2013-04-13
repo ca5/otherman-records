@@ -32,13 +32,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OthermanRecords/Util/MultiRequestOperation.h"
-         timestampString = "383842886.993845"
+         timestampString = "383927540.859895"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "18"
-         endingLineNumber = "18"
+         startingLineNumber = "17"
+         endingLineNumber = "17"
          landmarkName = "@interface MultiRequestOperation"
          landmarkType = "2">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "OthermanRecords/AlbumListViewController.m"
+         timestampString = "387391010.580423"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "109"
+         endingLineNumber = "109"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

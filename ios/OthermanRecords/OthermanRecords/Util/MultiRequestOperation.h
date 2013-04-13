@@ -11,7 +11,6 @@
 @interface MultiRequestOperation : NSOperation
 
 @property NSMutableData *data;
-
 - (id) initWithURL:(NSURL *)url;
 
 

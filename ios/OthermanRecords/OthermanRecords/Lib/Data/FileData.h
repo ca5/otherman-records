@@ -1,5 +1,5 @@
 //
-//  CacheData.h
+//  FileData.h
 //  OthermanRecords
 //
 //  Created by ca54makske on 13/03/02.
@@ -7,7 +7,11 @@
 //
 
 #import "Data.h"
+@protocol FileDataDelegate
+-(void) didFailWithError:(NSError *)error;
+-(void) didFinishLoading;
+@end
 
-@interface CacheData : Data
+@interface FileData : Data
 
 @end

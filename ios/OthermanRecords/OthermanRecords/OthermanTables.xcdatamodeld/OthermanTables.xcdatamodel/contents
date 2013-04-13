@@ -9,7 +9,7 @@
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Test" positionX="160" positionY="192" width="128" height="60"/>
-        <element name="Favorite" positionX="306" positionY="189" width="128" height="90"/>
+        <element name="Favorite" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Test" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

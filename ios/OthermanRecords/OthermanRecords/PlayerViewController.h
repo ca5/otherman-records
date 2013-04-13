@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Player.h"
 
-@interface PlayerViewController : UIViewController
+
+@interface PlayerViewController : UIViewController<PlayerDelegate>
 @property NSString *cutnum;
 @property NSString *tracknum;
 

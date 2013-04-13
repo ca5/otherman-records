@@ -11,12 +11,25 @@
 #import "AudioStreamer.h"
 #import "TrackList.h"
 
+@protocol PlayerDelegate
+-(void) playerDidChangeCurrentCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+-(void) playerDidChangeProgress:(double)progress duration:(double)duration;
+-(void) playerDidChangeStatusToWaiting;
+-(void) playerDidChangeStatusToPlaying;
+-(void) playerDidChangeStatusToIdle;
+
+
+@end
 
 @interface Player : NSObject<TrackDelegate>
 @property (readonly)NSString *cutnum;
 @property (readonly)NSString *tracknum;
 
-+(Player *)instance;
++(Player *)instanceWithDelegate:(id<PlayerDelegate>)delegate;
 -(void)startWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+-(BOOL)next;
+-(BOOL)prev;
+-(void)stop;
+-(BOOL)isPlaying;
 
 @end

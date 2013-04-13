@@ -8,6 +8,7 @@
 
 #import "ReleaseListViewController.h"
 #import "AlbumListViewController.h"
+#import "MBProgressHUD.h"
 
 @implementation ReleaseListViewController
 {
@@ -31,12 +32,14 @@
 {
     [super viewDidLoad];
     _images = [NSMutableDictionary dictionary];
-    [[AlbumList instanceWithDelegate:self] load];
+    [[AlbumList instanceWithDelegate:self] loadWithCache:NO];
     
     self.navigationController.navigationBar.tintColor  = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default@2x.png"]];
     background.contentMode = UIViewContentModeScaleAspectFill;
     self.tableView.backgroundView = background;
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+
 }
 
 - (void)viewDidUnload
@@ -68,7 +71,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"ReleaseCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
@@ -77,8 +80,23 @@
     
     // Configure the cell...
     NSDictionary *album = [[AlbumList instanceWithDelegate:self] objectAtIndex:indexPath.row];
-    cell.textLabel.text = [album objectForKey:@"album"];
-    cell.imageView.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:[album objectForKey:@"cutnum"]];
+    UILabel *title = (UILabel*)[cell viewWithTag:1];
+    UILabel *artists = (UILabel*)[cell viewWithTag:2];
+    UIImageView *thumbnail  = (UIImageView*)[cell viewWithTag:3];
+    UILabel *cutnum = (UILabel*)[cell viewWithTag:4];
+
+    
+    title.text = [album objectForKey:@"album"];
+    title.textColor =  [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    title.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    artists.text = [album objectForKey:@"artists"];
+    artists.textColor =  [UIColor colorWithRed:1 green:1 blue:1 alpha:0.6];
+    artists.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    thumbnail.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:[album objectForKey:@"cutnum"]];
+    cutnum.text = [NSString stringWithFormat:@"[%@]",[album objectForKey:@"cutnum"]];
+    cutnum.textColor =  [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    cutnum.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+
     return cell;
 }
 
@@ -91,8 +109,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }else{
         cell.backgroundColor =  [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.95];
     }
-    cell.textLabel.textColor =  [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
-    cell.textLabel.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+
+
 
 }
 
@@ -116,6 +134,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 -(void)albumDidFinishLoading
 {
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     [[Jacket instanceWithDelegate:self] load];
     [self.tableView reloadData];
 }
@@ -135,9 +154,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         }
     }
     UITableView *tableView = (UITableView *)self.view;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(NSInteger)i inSection:0]];
-    cell.imageView.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:cutnum];
-    [cell setNeedsLayout];   
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(NSInteger)i inSection:0]];    
+    UIImageView *thumbnail  = (UIImageView*)[cell viewWithTag:3];
+    thumbnail.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:cutnum];
+    [cell setNeedsLayout];
+
 }
 
 

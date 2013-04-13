@@ -10,6 +10,8 @@
 #import "PlayerViewController.h"
 #import "MultiRequestOperation.h"
 #import "AlbumList.h";
+#import "PlayList.h";
+#import "MBProgressHUD.h"
 
 @implementation AlbumListViewController
 {
@@ -31,12 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[TrackList instanceWithDelegate:self] load];
-    
+    self.hidesBottomBarWhenPushed = YES;
+
+    [[TrackList instanceWithDelegate:self] load];    
     self.navigationController.navigationBar.tintColor  = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
-    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default@2x.png"]];
-    background.contentMode = UIViewContentModeScaleAspectFill;
-    self.tableView.backgroundView = background;
+    self.tableView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 }
 
 - (void)viewDidUnload
@@ -55,15 +57,13 @@
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row % 2){
+    if(indexPath.section == 0  ){
+        cell.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.95];
+    }else if(indexPath.row % 2){
         cell.backgroundColor =  [UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:0.95];
     }else{
         cell.backgroundColor =  [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.95];
-    }
-    cell.textLabel.textColor =  [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
-    cell.textLabel.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-
-    
+    }    
 }
 
 #pragma mark - Table view data source
@@ -97,37 +97,61 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        NSLog(@"row:%d",indexPath.row);
-        cell.textLabel.text = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"title"];
+        UILabel *title  = (UILabel*)[cell viewWithTag:1];
+        UILabel *creator = (UILabel*)[cell viewWithTag:2];
+        UILabel *num = (UILabel*)[cell viewWithTag:3];
+        
+        title.text = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"title"];
+        title.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        title.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+        creator.text = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"creator"];
+        creator.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
+        creator.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+        num.text = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"num"];
+        num.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
+        num.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+        
         return cell;
     }else{
         static NSString *CellIdentifier = @"AlbumCell";
+
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        NSLog(@"row:%d , txt:%@ ",indexPath.row ,cell.textLabel.text);
-        cell.imageView.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:_cutnum];
-        /*
-        UIImage *img = [_images objectForKey:_cutnum];
-        if(img != nil){
-            cell.imageView.image = [_images objectForKey:_cutnum];
-        }else{
-            //load jacket image
-            NSURL *jacketurl = [[AlbumList instanceWithDelegate:nil] jacketURLWithCutnum:_cutnum];
-            NSLog(@"thumburl: %@", jacketurl);
-            MultiRequestOperation *mro = [[MultiRequestOperation alloc] initWithURL:jacketurl];
-            if(_queue == nil){
-                _queue = [[NSOperationQueue alloc] init];
-            }
+        
+        UIImageView *thumbnail  = (UIImageView*)[cell viewWithTag:1];
+        UILabel *cutnum = (UILabel*)[cell viewWithTag:2];
+        UILabel *title = (UILabel*)[cell viewWithTag:3];
+        UILabel *artists = (UILabel*)[cell viewWithTag:4];
+        UITextView *description = (UITextView*)[cell viewWithTag:5];
+        UILabel *date = (UILabel*)[cell viewWithTag:6];
 
-            [mro addObserver:self forKeyPath:@"isFinished"
-                     options:NSKeyValueObservingOptionNew context:indexPath.row];
-            [_queue addOperation:mro];
-        }
-         */
+        thumbnail.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:_cutnum];
+        NSDictionary *album = [[AlbumList instanceWithDelegate:nil] albumWithCutnum:_cutnum];
+        cutnum.text = [album objectForKey:@"cutnum"];
+        cutnum.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
+        title.text = [album objectForKey:@"album"];
+        title.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        artists.text = [album objectForKey:@"artists"];
+        artists.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
+        description.text = [album objectForKey:@"description"];
+        description.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        description.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+        date.text = [album objectForKey:@"date"];
+        date.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
+        
         return cell;
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 1){
+        return 44;
+
+    }else{
+        return 140;
     }
 }
 
@@ -148,15 +172,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
     if ( [[segue identifier] isEqualToString:@"Player"] ) {
         PlayerViewController *nextViewController = [segue destinationViewController];
-        //ここで遷移先ビューのクラスの変数receiveStringに値を渡している
         nextViewController.cutnum = _cutnum;
         nextViewController.tracknum = _tracknum;
+        [[PlayList instance] setFromTrackList];
     }
 }
 
 -(void)trackDidFinishLoading
 {
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     [self.tableView reloadData];
+
 }
 
 -(void)didFailWithError:(NSError *)error
@@ -168,43 +194,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object
                         change:(NSDictionary*)change context:(void*)context
 {
-    UITableView *tableView = (UITableView *)self.view;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    UIImage *img = [[UIImage alloc] initWithData:((MultiRequestOperation *)object).data];
-    NSLog(@"observe:%d",(NSInteger)context);
-    cell.imageView.image = img;
-    NSDictionary *album = [[AlbumList instanceWithDelegate:nil] objectAtIndex:context];
-    if(img != nil){
-        [_images setObject:img forKey:[album objectForKey:@"cutnum"]];
-    }
-    
-    cell.textLabel.text = @"loaded";
-    [cell setNeedsLayout];
-    
-    
-    // データの長さを取得する
-    unsigned int    length;
-    length = [((MultiRequestOperation *)object).data length];
-    NSLog(@"data length %d id:%d", length, (int)context);
-    
-    // キー値監視を解除する
-    [object removeObserver:self forKeyPath:keyPath];
 }
 
 -(void) jacketDidFinishLoadingWithCutnum:(NSString *)cutnum
 {
-    if([_cutnum isEqualToString:cutnum]){
-        int i = 0;
-        for(; i < [[AlbumList instanceWithDelegate:self] count]; i++ ){
-            if(cutnum == [[[AlbumList instanceWithDelegate:self] objectAtIndex:i] objectForKey:@"cutnum"]){
-                break;
-            }
-        }
-        UITableView *tableView = (UITableView *)self.view;
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        cell.imageView.image = [[Jacket instanceWithDelegate:self] imageWithCutnum:cutnum];
-        [cell setNeedsLayout];
-    }
 }
 
 

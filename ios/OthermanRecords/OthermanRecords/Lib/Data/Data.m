@@ -26,7 +26,7 @@
 
 - (BOOL)loadWithCache:(BOOL)cache
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     return YES;
 }
 
