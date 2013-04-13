@@ -35,6 +35,36 @@
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
+        <!--Table View Controller - Favolites-->
+        <scene sceneID="CjV-sR-WsW">
+            <objects>
+                <tableViewController id="eUV-t1-brb" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="s1x-ie-eRy">
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="YEY-WW-F3A">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eUV-t1-brb" id="lfe-pZ-qca"/>
+                            <outlet property="delegate" destination="eUV-t1-brb" id="5YT-Zt-NIE"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Favolites" id="5aV-UW-V8O"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0qu-SQ-72D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="797" y="469"/>
+        </scene>
         <!--Album List View Controller - Album-->
         <scene sceneID="0TB-Xw-E7s">
             <objects>
@@ -312,11 +342,12 @@
                     <connections>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="dt8-js-5My" kind="relationship" relationship="viewControllers" id="rbD-Lg-vch"/>
+                        <segue destination="eUV-t1-brb" kind="relationship" relationship="viewControllers" id="azZ-fp-Rhl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="180"/>
+            <point key="canvasLocation" x="162" y="246"/>
         </scene>
         <!--Navigation Controller - Releases-->
         <scene sceneID="kO7-de-QeF">
