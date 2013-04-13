@@ -36,7 +36,7 @@
     return YES;
 }
 
-- (BOOL)setList:(NSMutableArray *)list;
+- (void)setList:(NSMutableArray *)list;
 {
     _list = list;
 }

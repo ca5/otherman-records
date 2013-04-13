@@ -44,6 +44,7 @@
 		6AE352DC1719114300EE293F /* XmlData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE352D31719114300EE293F /* XmlData.m */; };
 		6AE352DD1719114300EE293F /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE352D61719114300EE293F /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6AE352DE1719114300EE293F /* StreamingPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE352D81719114300EE293F /* StreamingPlayer.m */; };
+		6AE352E01719234500EE293F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AE352DF1719234500EE293F /* Default-568h@2x.png */; };
 		6AEB3AB416BFF44500F0EC1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB316BFF44500F0EC1F /* UIKit.framework */; };
 		6AEB3AB616BFF44500F0EC1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB516BFF44500F0EC1F /* Foundation.framework */; };
 		6AEB3AB816BFF44500F0EC1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEB3AB716BFF44500F0EC1F /* CoreGraphics.framework */; };
@@ -121,6 +122,7 @@
 		6AE352D61719114300EE293F /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		6AE352D71719114300EE293F /* StreamingPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingPlayer.h; sourceTree = "<group>"; };
 		6AE352D81719114300EE293F /* StreamingPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingPlayer.m; sourceTree = "<group>"; };
+		6AE352DF1719234500EE293F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		6AEB3AAF16BFF44500F0EC1F /* OthermanRecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OthermanRecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEB3AB316BFF44500F0EC1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6AEB3AB516BFF44500F0EC1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -255,9 +257,8 @@
 		6AEB3AA416BFF44400F0EC1F = {
 			isa = PBXGroup;
 			children = (
+				6AE352DF1719234500EE293F /* Default-568h@2x.png */,
 				6AE352C81719106500EE293F /* Default@2x.png */,
-				6ADD680116DD071F00E1377C /* QuartzCore.framework */,
-				6ADD67FF16DD070C00E1377C /* MediaPlayer.framework */,
 				6AEB3AB916BFF44500F0EC1F /* OthermanRecords */,
 				6AEB3AE516BFF44500F0EC1F /* OthermanRecordsTests */,
 				6AEB3AB216BFF44500F0EC1F /* Frameworks */,
@@ -277,6 +278,8 @@
 		6AEB3AB216BFF44500F0EC1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6ADD680116DD071F00E1377C /* QuartzCore.framework */,
+				6ADD67FF16DD070C00E1377C /* MediaPlayer.framework */,
 				6ADD67B216D3C80700E1377C /* CoreData.framework */,
 				6AEB3AB316BFF44500F0EC1F /* UIKit.framework */,
 				6AB0077E16CA7CBE00717430 /* AudioToolbox.framework */,
@@ -430,6 +433,7 @@
 				6AE352C617190FD100EE293F /* second.png in Resources */,
 				6AE352C717190FD100EE293F /* second@2x.png in Resources */,
 				6AE352C91719106500EE293F /* Default@2x.png in Resources */,
+				6AE352E01719234500EE293F /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
