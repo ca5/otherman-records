@@ -81,7 +81,8 @@ NSString * date = nil;
         [self.currentStatus setValue:textData forKey:@"filename"];
         
     } else if ([self.currentXpath isEqualToString: @"releases/release/tracks/track/num/"]) {
-        [self.currentStatus setValue:textData forKey:@"num"];
+        NSNumber *num = [[NSNumber alloc] initWithInt:[textData intValue]];
+        [self.currentStatus setValue:num forKey:@"num"];
     }else if ([self.currentXpath isEqualToString: @"releases/release/cutnum/"]) {
         cutnum = textData;
     }else if ([self.currentXpath isEqualToString: @"releases/release/date/"]) {
@@ -117,19 +118,20 @@ NSString * date = nil;
     return result;
 }
 
-- (NSDictionary *)trackWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+- (NSDictionary *)trackWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;
 {
     NSArray *list = [self listWithCutnum:cutnum];
 
     for(int n = 0; n < [list count]; n ++){
-        if([tracknum isEqualToString:[[list objectAtIndex:n] objectForKey:@"num"]]){
+        
+        if([tracknum isEqualToNumber:[[list objectAtIndex:n] objectForKey:@"num"]]){
             return [list objectAtIndex:n];
         }
     }
     return nil;
 }
 
-- (NSURL *)trackURLWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum
+- (NSURL *)trackURLWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum
 {
     return [NSURL URLWithString:
             [[self trackWithCutnum:cutnum tracknum:tracknum] objectForKey:@"filename"]];
@@ -177,8 +179,8 @@ int comparator(id val1, id val2, void *context)
     }
     
     //compare tracknum
-    float num1 = [[(NSDictionary *)val1 objectForKey:@"num"] floatValue];
-    float num2 = [[(NSDictionary *)val2 objectForKey:@"num"] floatValue];
+    int num1 = [[(NSDictionary *)val1 objectForKey:@"num"] intValue];
+    int num2 = [[(NSDictionary *)val2 objectForKey:@"num"] intValue];
     if(num1 < num2){
         return NSOrderedAscending;
     } else if (num1 < num2){

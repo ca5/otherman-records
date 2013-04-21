@@ -13,12 +13,12 @@
 
 @interface PlayList : Data <TrackDelegate>
 @property (readonly) NSString *currentCutnum;
-@property (readonly) NSString *currentTracknum;
+@property (readonly) NSNumber *currentTracknum;
 @property BOOL repeat;
 
 
 +(PlayList *)instance;
--(BOOL)setCurrentIndexWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+-(BOOL)setCurrentIndexWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;
 -(BOOL)next;
 -(BOOL)prev;
 -(void)setFromTrackList;

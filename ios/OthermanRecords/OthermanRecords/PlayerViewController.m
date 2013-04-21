@@ -101,7 +101,7 @@
     
 }
 
--(void)playerDidChangeCurrentCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum
+-(void)playerDidChangeCurrentCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum
 {
     NSLog(@"track changed: %@ %@", cutnum, tracknum);
     _cutnum = cutnum;

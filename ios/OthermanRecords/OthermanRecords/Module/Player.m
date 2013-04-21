@@ -12,7 +12,7 @@
 @implementation Player
 {
     NSString *_new_cutnum;
-    NSString *_new_tracknum;
+    NSNumber *_new_tracknum;
     AudioStreamer *_streamer;
     NSTimer *progressUpdateTimer;
     id<PlayerDelegate> _delegate;
@@ -48,10 +48,10 @@
 
 
 
--(void)startWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+-(void)startWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;
 {
     [[PlayList instance] setCurrentIndexWithCutnum:cutnum tracknum:tracknum];
-    //if([cutnum isEqualToString:_cutnum] && [tracknum isEqualToString:_tracknum]){
+    //if([cutnum isEqualToString:_cutnum] && [tracknum isEqualToNumber:_tracknum]){
         //[[StreamingPlayer getInstance] start];
     ///    [self createStreamerWithCutnum:cutnum tracknum:tracknum];
     //} else {
@@ -140,7 +140,7 @@
 //
 // Creates or recreates the AudioStreamer object.
 //
-- (void)createStreamerWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum
+- (void)createStreamerWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum
 {
 	if (_streamer)
 	{

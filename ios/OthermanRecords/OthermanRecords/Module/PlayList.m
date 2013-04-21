@@ -43,19 +43,19 @@
     return [super init];
 }
 
--(BOOL)setCurrentIndexWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum
+-(BOOL)setCurrentIndexWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum
 {
     int i = 0;
     for(i = 0; i < [self count]; i++){
         if([[[self objectAtIndex:i] objectForKey:@"cutnum"] isEqualToString:cutnum]
-           && [[[self objectAtIndex:i] objectForKey:@"num"] isEqualToString:tracknum]){
+           && [[[self objectAtIndex:i] objectForKey:@"num"] isEqualToNumber:tracknum]){
             break;
         }
     }
     
-    //2nd check
-    if([[self objectAtIndex:i] objectForKey:@"cutnum"] == cutnum
-       && [[self objectAtIndex:i] objectForKey:@"num"] == tracknum){
+    //search check
+    if(![[[self objectAtIndex:i] objectForKey:@"cutnum"] isEqualToString:cutnum]
+       || ![[[self objectAtIndex:i] objectForKey:@"num"] isEqualToNumber:tracknum]){
         return NO;
     }
     _cindex = i;

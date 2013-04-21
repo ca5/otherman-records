@@ -24,7 +24,7 @@
 
 - (NSArray *)listWithCutnum:(NSString *)cutnum;
 
-- (NSDictionary *)trackWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
-- (NSURL *)trackURLWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+- (NSDictionary *)trackWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;
+- (NSURL *)trackURLWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;
 //- (TrackList *)sortedList;
 @end

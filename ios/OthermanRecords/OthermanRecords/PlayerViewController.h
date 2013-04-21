@@ -12,7 +12,7 @@
 
 @interface PlayerViewController : UIViewController<PlayerDelegate>
 @property NSString *cutnum;
-@property NSString *tracknum;
+@property NSNumber *tracknum;
 
 
 @end

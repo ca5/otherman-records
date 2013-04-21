@@ -12,7 +12,7 @@
 #import "TrackList.h"
 
 @protocol PlayerDelegate
--(void) playerDidChangeCurrentCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+-(void) playerDidChangeCurrentCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;
 -(void) playerDidChangeProgress:(double)progress duration:(double)duration;
 -(void) playerDidChangeStatusToWaiting;
 -(void) playerDidChangeStatusToPlaying;
@@ -23,10 +23,10 @@
 
 @interface Player : NSObject<TrackDelegate>
 @property (readonly)NSString *cutnum;
-@property (readonly)NSString *tracknum;
+@property (readonly)NSNumber *tracknum;
 
 +(Player *)instanceWithDelegate:(id<PlayerDelegate>)delegate;
--(void)startWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
+-(void)startWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;
 -(BOOL)next;
 -(BOOL)prev;
 -(void)stop;

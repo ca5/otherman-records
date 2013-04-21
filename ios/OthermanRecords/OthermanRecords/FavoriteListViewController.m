@@ -69,7 +69,7 @@
     
     NSDictionary *favorite = [[Favorite instance] objectAtIndex:indexPath.row];
     NSString *cutnum = [favorite objectForKey:@"cutnum"];
-    NSString *tracknum = [NSString stringWithFormat:@"%@", [favorite objectForKey:@"tracknum"]];
+    NSNumber *tracknum = [favorite objectForKey:@"tracknum"];
     Jacket *jacket = [Jacket instanceWithDelegate:self];
     thumbnail.image = [jacket imageWithCutnum:cutnum];
     TrackList *tracklist = [TrackList instanceWithDelegate:self];

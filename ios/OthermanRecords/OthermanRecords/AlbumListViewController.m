@@ -15,7 +15,7 @@
 
 @implementation AlbumListViewController
 {
-    NSString *_tracknum; //古いリリースで一部分数表記
+    NSNumber *_tracknum;
     NSOperationQueue *_queue;
     NSMutableDictionary *_images;
 }
@@ -39,6 +39,7 @@
     self.navigationController.navigationBar.tintColor  = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     self.tableView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    NSLog(@"[DEBUG] AlbumListView loaded");
 }
 
 - (void)viewDidUnload
@@ -107,7 +108,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         creator.text = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"creator"];
         creator.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
         creator.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-        num.text = [[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"num"];
+        num.text = [[[[[TrackList instanceWithDelegate:self] listWithCutnum:_cutnum] objectAtIndex:indexPath.row] objectForKey:@"num"] stringValue];
         num.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
         num.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         
@@ -180,6 +181,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 -(void)trackDidFinishLoading
 {
+    NSLog(@"trackDidFinishLoading");
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     [self.tableView reloadData];
 
