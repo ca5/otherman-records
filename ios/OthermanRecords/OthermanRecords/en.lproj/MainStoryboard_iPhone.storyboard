@@ -90,11 +90,11 @@
             </objects>
             <point key="canvasLocation" x="633" y="-299"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Favorites-->
         <scene sceneID="BaZ-XW-t81">
             <objects>
                 <navigationController definesPresentationContext="YES" id="veq-ey-Xis" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LlU-JG-YO7"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" id="LlU-JG-YO7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tl0-KE-ffa">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -106,21 +106,41 @@
             </objects>
             <point key="canvasLocation" x="667" y="1226"/>
         </scene>
-        <!--Table View Controller - Favolites-->
+        <!--Favorite List View Controller - Favolites-->
         <scene sceneID="CjV-sR-WsW">
             <objects>
-                <tableViewController id="eUV-t1-brb" sceneMemberID="viewController">
+                <tableViewController id="eUV-t1-brb" customClass="FavoriteListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="s1x-ie-eRy">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="YEY-WW-F3A">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavoriteCell" id="YEY-WW-F3A">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" id="hwF-sJ-eOO">
+                                            <rect key="frame" x="2" y="2" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HFh-lG-vSU">
+                                            <rect key="frame" x="50" y="2" width="270" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="Creator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DPN-BG-HHH">
+                                            <rect key="frame" x="50" y="22" width="270" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
@@ -149,7 +169,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlbumCell" rowHeight="140" id="pMw-Wf-DwQ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlbumCell" rowHeight="140" id="pMw-Wf-DwQ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -310,7 +330,6 @@
         <!--Player View Controller-->
         <scene sceneID="Vwc-Jj-Tgv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Jg-gr-Vpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="CLn-wI-AMs" customClass="PlayerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="laJ-1e-hkH">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -401,6 +420,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="KQD-Yg-rZq"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Jg-gr-Vpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2067" y="884"/>
         </scene>
@@ -425,7 +445,7 @@
             </objects>
             <point key="canvasLocation" x="-128" y="457"/>
         </scene>
-        <!--View Controller - Item-->
+        <!--View Controller - Info-->
         <scene sceneID="p15-4Y-7St">
             <objects>
                 <viewController id="dUz-zI-TZD" sceneMemberID="viewController">
@@ -434,7 +454,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="MCN-xg-deL"/>
+                    <tabBarItem key="tabBarItem" title="Info" id="MCN-xg-deL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7t6-go-QOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -468,6 +488,9 @@
     <classes>
         <class className="AlbumListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumListViewController.h"/>
+        </class>
+        <class className="FavoriteListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteListViewController.h"/>
         </class>
         <class className="PlayerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerViewController.h"/>

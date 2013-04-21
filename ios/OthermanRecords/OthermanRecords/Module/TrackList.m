@@ -26,13 +26,20 @@ NSString * date = nil;
     dispatch_once(&pred, ^{
         shared = [[[self class] alloc] init];
     });
-    return shared;
+    return [shared setDelegate:delegate];
 }
 
 -(id)init
 {
     return [super initWithFilename:RELEASES_XML_FILE url_str:RELEASES_XML_URL delegate:self];
 }
+
+-(id)setDelegate:(id<TrackDelegate>)delegate
+{
+    trackDelegate = delegate;
+    return self;
+}
+
 
 - (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     [self.currentXpath appendString: elementName];
@@ -90,7 +97,7 @@ NSString * date = nil;
 -(void)didFinishLoading
 {
     NSLog(@"didFinishLoading(from XmlDataDelegate)");
-    [self sort];
+    //[self sort];
     [trackDelegate trackDidFinishLoading];
 }
 
@@ -113,6 +120,7 @@ NSString * date = nil;
 - (NSDictionary *)trackWithCutnum:(NSString *)cutnum tracknum:(NSString *)tracknum;
 {
     NSArray *list = [self listWithCutnum:cutnum];
+
     for(int n = 0; n < [list count]; n ++){
         if([tracknum isEqualToString:[[list objectAtIndex:n] objectForKey:@"num"]]){
             return [list objectAtIndex:n];
@@ -127,11 +135,11 @@ NSString * date = nil;
             [[self trackWithCutnum:cutnum tracknum:tracknum] objectForKey:@"filename"]];
 }
 
-
--(void)sort
+/*
+-(TrackList *)sortedList
 {
     [self setList:[[self sortedArrayUsingFunction:comparator context:nil] mutableCopy]];
-}
+}*/
 
 int comparator(id val1, id val2, void *context)
 {

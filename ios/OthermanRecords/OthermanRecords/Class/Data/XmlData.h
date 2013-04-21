@@ -21,6 +21,7 @@
 @property (retain , nonatomic) NSMutableString *textNodeCharacters;
 
 - (id)initWithFilename:(NSString *)file_name url_str:(NSString *)url_str delegate:(id<XmlDataDelegate>)delegate;
+//-(id)setDelegate:(id<XmlDataDelegate>)delegate;
 - (NSArray *) parseStatuses:(NSData *)xmlData;
 
 

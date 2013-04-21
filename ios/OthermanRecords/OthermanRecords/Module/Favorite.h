@@ -11,7 +11,7 @@
 
 @interface Favorite : DBData
 
-- (id)init;
++ (id)instance;
 - (void)addFavoliteWithCutnum:(NSString *)cutnum tracknum:(NSNumber *)tracknum;
 - (void)deleteFavoliteAtIndex:(NSUInteger) index;
 

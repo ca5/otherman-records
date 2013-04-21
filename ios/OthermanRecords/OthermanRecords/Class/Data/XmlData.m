@@ -43,6 +43,13 @@ BOOL use_cache = YES;
     return YES;
 }
 
+/*
+-(id)setDelegate:(id<XmlDataDelegate>)delegate
+{
+    _delegate = delegate;
+    return self;
+}*/
+
 - (BOOL)clear
 {
     [super clear];

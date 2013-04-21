@@ -22,12 +22,18 @@ id<AlbumDelegate> albumDelegate = nil;
     dispatch_once(&pred, ^{
         shared = [[[self class] alloc] init];
     });
-    return shared;
+    return [shared setDelegate:delegate];
 }
 
 -(id)init
 {
     return [super initWithFilename:RELEASES_XML_FILE url_str:RELEASES_XML_URL delegate:self];
+}
+
+-(id)setDelegate:(id<AlbumDelegate>)delegate
+{
+    albumDelegate = delegate;
+    return self;
 }
 
 - (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {

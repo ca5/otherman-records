@@ -10,6 +10,17 @@
 
 @implementation Favorite
 
++ (id)instance
+{
+    static dispatch_once_t pred;
+    static Favorite *shared = nil;
+    
+    dispatch_once(&pred, ^{
+        shared = [[[self class] alloc] init];
+    });
+    return shared;
+}
+
 - (id)init
 {
     return [super initWithTableName:@"Favorite" sortKeyName:@"timeStamp"];

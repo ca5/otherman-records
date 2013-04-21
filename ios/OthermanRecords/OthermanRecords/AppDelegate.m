@@ -23,14 +23,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-/* Favorite test
+/* Favorite test 
     
-    Favorite *favorite = [[Favorite alloc] init];
+    Favorite *favorite = [Favorite instance];
     [favorite load];
-    [favorite addFavoliteWithCutnum:@"OTMN000" tracknum:[NSNumber numberWithInt:2]];
-    [favorite addFavoliteWithCutnum:@"OTMN000" tracknum:[NSNumber numberWithInt:3]];
-    [favorite addFavoliteWithCutnum:@"OTMN003" tracknum:[NSNumber numberWithInt:5]];
-    [favorite addFavoliteWithCutnum:@"OTMN006" tracknum:[NSNumber numberWithInt:10]];
+    [favorite addFavoliteWithCutnum:@"OTMN001" tracknum:[NSNumber numberWithInt:1]];
+    [favorite addFavoliteWithCutnum:@"OTMN002" tracknum:[NSNumber numberWithInt:2]];
+    [favorite addFavoliteWithCutnum:@"OTMN003" tracknum:[NSNumber numberWithInt:1]];
+    [favorite addFavoliteWithCutnum:@"OTMN004" tracknum:[NSNumber numberWithInt:2]];
     NSLog(@"favorite:\n %@", [favorite description]);
 
 

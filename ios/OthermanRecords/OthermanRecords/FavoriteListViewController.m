@@ -7,6 +7,7 @@
 //
 
 #import "FavoriteListViewController.h"
+#import "Favorite.h"
 
 @interface FavoriteListViewController ()
 
@@ -26,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"Favorite list loaded");
+    [(Favorite *)[Favorite instance] load];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -44,36 +47,47 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return  [[Favorite instance] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"FavoriteCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
     // Configure the cell...
+        
+    UIImageView *thumbnail  = (UIImageView*)[cell viewWithTag:1];
+    UILabel *title = (UILabel*)[cell viewWithTag:2];
+    UILabel *creator = (UILabel*)[cell viewWithTag:3];
+    
+    NSDictionary *favorite = [[Favorite instance] objectAtIndex:indexPath.row];
+    NSString *cutnum = [favorite objectForKey:@"cutnum"];
+    NSString *tracknum = [NSString stringWithFormat:@"%@", [favorite objectForKey:@"tracknum"]];
+    Jacket *jacket = [Jacket instanceWithDelegate:self];
+    thumbnail.image = [jacket imageWithCutnum:cutnum];
+    TrackList *tracklist = [TrackList instanceWithDelegate:self];
+    NSDictionary *track = [tracklist trackWithCutnum:cutnum tracknum:tracknum];    
+    title.text = [track objectForKey:@"title"];
+    creator.text = [track objectForKey:@"creator"];
     
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
+
 
 /*
 // Override to support editing the table view.
@@ -117,5 +131,30 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+-(void) jacketDidFinishLoadingWithCutnum:(NSString *)cutnum
+{
+    //do nothing
+}
+
+-(void)jacketDidFailWithError:(NSError *)error
+{
+    NSString *error_str = [error localizedDescription];
+    NSLog(@"[ERR]Load Jacket error:%@", error_str);
+}
+
+-(void)trackDidFinishLoading
+{
+    //[MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+    [self.tableView reloadData];
+    
+}
+
+-(void)trackDidFailWithError:(NSError *)error
+{
+    NSString *error_str = [error localizedDescription];
+    NSLog(@"[ERR]Load Track error:%@", error_str);
+}
+
 
 @end
